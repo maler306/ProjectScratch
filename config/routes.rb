@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :org_people, :controllers => { 
+    :registrations => "org_people/registrations",
+    :sessions => "org_people/sessions",
+    :passwords => "org_people/passwords" , 
+    :confirmations => "org_people/confirmations" }
+    
+  devise_scope :org_person do 
+    get 'signup',  to: 'org_people/registrations#new'
+    get 'signin',  to: 'org_people/sessions#new'
+    delete 'signout', to: 'org_people/sessions#destroy'
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +25,8 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :catalogues
+  root "catalogues#index"
   # Example resource route with options:
   #   resources :products do
   #     member do

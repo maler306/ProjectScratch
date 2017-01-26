@@ -38,4 +38,22 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  #devise section
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_options = {from: 'no-reply@marketpr5.com'}
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587, 
+    domain: 'localhost:3000',
+    user_name: 'nurlan.shor',
+    password: '7017220763',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  
 end
