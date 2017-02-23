@@ -5,4 +5,8 @@ class AddTypCompanies < ActiveRecord::Migration
   	TypCompany.create(name: "Deliverer")
   	TypCompany.create(name: "Supplier") 
   end
+
+  def down
+  	TypCompany.delete_all
+  end
 end

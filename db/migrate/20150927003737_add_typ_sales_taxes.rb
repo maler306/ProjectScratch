@@ -19,4 +19,8 @@ class AddTypSalesTaxes < ActiveRecord::Migration
   	TypSalesTax.create(tax_rate: 5, typ_region_id: 535, typ_tax_id: 2)
   	TypSalesTax.create(tax_rate: 5, typ_region_id: 536, typ_tax_id: 1)
   end
+
+  def down
+    TypSalesTax.delete_all
+  end
 end

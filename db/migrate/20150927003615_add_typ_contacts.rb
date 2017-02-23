@@ -4,4 +4,8 @@ class AddTypContacts < ActiveRecord::Migration
   	TypContact.create(name: "Billing")
   	TypContact.create(name: "Shipping")
   end
+
+  def down
+  	TypContact.delete_all
+  end
 end

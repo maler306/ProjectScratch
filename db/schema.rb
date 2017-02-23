@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118115515) do
+ActiveRecord::Schema.define(version: 20170216060303) do
 
   create_table "org_companies", force: :cascade do |t|
     t.string   "name",             limit: 255,   null: false

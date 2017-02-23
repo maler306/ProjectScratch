@@ -27,7 +27,11 @@ Rails.application.routes.draw do
   #   resources :products
   resources :catalogues
   resources :org_people
+  resources :org_companies
   root "catalogues#index"
+
+  match '/org_register', to:'org_companies#new', via: 'get'
+  
   # Example resource route with options:
   #   resources :products do
   #     member do

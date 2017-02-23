@@ -8,5 +8,6 @@ class AddTypPositions < ActiveRecord::Migration
   end
 
   def down
+  	TypPosition.delete_all
   end
 end

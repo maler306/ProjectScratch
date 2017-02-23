@@ -6,4 +6,8 @@ class AddTypTaxes < ActiveRecord::Migration
   	TypTax.create(id: 3, name: "HST")
   	TypTax.create(id: 4, name: "QST")
   end
+
+  def down
+  	TypTax.delete_all
+  end
 end

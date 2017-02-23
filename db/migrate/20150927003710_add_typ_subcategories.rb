@@ -53,4 +53,8 @@ class AddTypSubcategories < ActiveRecord::Migration
   	TypSubcategory.create(id: 50, typ_category_id: 10, name: "Shellfish")
   	TypSubcategory.create(id: 51, typ_category_id: 10, name: "Specialty Items")
   end
+
+  def down
+    TypSubcategory.delete_all
+  end
 end

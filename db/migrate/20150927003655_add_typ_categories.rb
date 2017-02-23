@@ -12,4 +12,8 @@ class AddTypCategories < ActiveRecord::Migration
   	TypCategory.create(id: 9, name: "Produce")
   	TypCategory.create(id: 10, name: "Seafood")
   end
+
+  def down
+    TypCategory.delete_all
+  end
 end
