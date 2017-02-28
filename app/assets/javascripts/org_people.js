@@ -1,12 +1,12 @@
 var setupFieldsNeeded, setupManaged;
 $(document).ready(function() {
-    var regions;
+  var regions;
 
-    $('.deletePhoto').hide();
+  $('.deletePhoto').hide();
 
-    if ($('.profilePhoto').length){
-    	$('.photoPreview').hide()
-    }
+  if ($('.profilePhoto').length){
+  	$('.photoPreview').hide()
+  }
 
  	$('.profilePhoto').click(function(){
  		$('.profilePhoto').hide();

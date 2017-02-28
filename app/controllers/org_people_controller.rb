@@ -5,6 +5,7 @@ class OrgPeopleController < ApplicationController
 		@contactInfo[:email] = current_org_person.email
 		@person.org_contacts.build(@contactInfo.attributes)
 	end
+
 	def update
 		# Create org_ca to sanitize our hash to proper "contacts" attributes
 		@org_ca = update_person_params["org_contacts_attributes"]["0"]
@@ -26,20 +27,7 @@ class OrgPeopleController < ApplicationController
 		end
 		# Find contacts record or create them if necessary
 		@contact = OrgContact.find_or_create_by(org_person_id: current_org_person.id)
-			# person = OrgContact.find(org_person_id: current_org_person.id)
-			# if person.blank?
-			#     Create the person with all the needed attributes.
-			# else
-			#     User exists, update the user with the attributes and save.
-			# end
-		#@contact = OrgContact.find(org_person_id: current_org_person.id)
-			 # if OrgContact.where(org_person_id: current_org_person.id).blank?
-			 # 	@contact = OrgContact.new(org_person_id: params[:id])
-			 # 	@contact.save
-			 # else
-			 # 	@contact=OrgContact.find(org_person_id: current_org_person.id)
-			 # 	@contact.update_attributes(@org_ca)
-			 # end
+		    
 		# Try to save it, if it saves, then redirect to the edit page with success
 		if @contact.update_attributes(@org_ca) 
 		    # If this user also controls the information of the company (i.e. COO) then also update company email
@@ -50,6 +38,20 @@ class OrgPeopleController < ApplicationController
 	    else # Failed. Re-render the page as unsucessful
 	        render :edit
 		end
+	end
+
+	# Edits a position/role (i.e. COO, Director, Store Manager, etc.)
+	def edit_position
+		person_info = OrgPerson.find_by_id(params[:id])
+		person_info.update(typ_position_id: params[:typ_position_id], org_company_id: current_org_person.org_company_id)
+	end
+	
+	# Removes a person from the company
+	def remove_from_company
+		person_info = OrgPerson.find_by_id(params[:id])
+		person_info.update(typ_position_id: 0, org_company_id: nil)
+		contact_info = OrgContact.find_by(org_person_id: params[:id])
+		contact_info.update(org_company_id: nil)
 	end
 
 	private 
