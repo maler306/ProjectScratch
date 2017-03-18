@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216060303) do
+ActiveRecord::Schema.define(version: 20170315150246) do
 
   create_table "org_companies", force: :cascade do |t|
     t.string   "name",             limit: 255,   null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20170216060303) do
     t.integer  "typ_subcategory_id",     limit: 4
     t.string   "name",                   limit: 255,                                          null: false
     t.text     "description",            limit: 65535,                                        null: false
-    t.decimal  "weight_in_grams",                      precision: 10,           default: 0,   null: false
+    t.decimal  "weight_in_grams",                      precision: 10,                         null: false
     t.decimal  "price",                                precision: 5,  scale: 2,               null: false
     t.integer  "available_quantity",     limit: 4,                                            null: false
     t.datetime "expiry_date",                                                                 null: false
